@@ -2,15 +2,47 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Game of Life</title>
+    <meta charset="UTF-8"/>
+    <link rel="icon" href="/assets/favicon.ico" sizes="32x32">
+    <!--- <link rel="icon" href="/assets/icon.svg" type="image/svg+xml"> --->
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Conway's Game of Life | @iyyel</title>
 </head>
 
 <body>
-  <div id="app"></div>
-  <script type="module" src="/main.js"></script>
+<div id="app">
+    <div class="row" style="margin-bottom: 1em;">
+        <div class="col-xs-6">
+            <div class="pull-left">
+                <button id="btn-start-stop" type="button" class="btn btn-default btn-sm" style="margin-top: 4px;">
+                    <span class="btn-label">Start</span>
+                </button>
+                <button id="btn-clear" type="button" class="btn btn-warning btn-sm">
+                    <span class="btn-label">Clear</span>
+                </button>
+                <button id="btn-random" type="button" class="btn btn-warning btn-sm">
+                    <span class="btn-label">Random seed</span>
+                </button>
+                <button class="btn btn-success btn-sm"
+                        type="button"
+                        data-toggle="modal"
+                        data-target="#modal-new-universe">
+                    <span class="btn-label">New universe</span>
+                </button>
+                <div id="zoom-slider-container">
+                    <label for="zoom-slider"></label>
+                    <input id="zoom-slider" type="range" min="1" max="10" value="5" class="slider">
+                    <div class="slider-label" id="sliderValue">50</div>
+                </div>
+            </div>
+        </div>
+        <canvas id="canvas">
+        </canvas>
+    </div>
+</div>
+<script type="module" src="/main.js"></script>
 </body>
 
 </html>
