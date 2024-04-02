@@ -2,14 +2,15 @@ package io.iyyel.game.of.life.controls
 
 import io.iyyel.game.of.life.logic.CellPlane.{Alive, CellCoordinates, Dead}
 import io.iyyel.game.of.life.logic.{State, Universe, UniverseChanges}
+import io.iyyel.game.of.life.util.Extensions.*
 import org.scalajs.dom
 import org.scalajs.dom.CanvasRenderingContext2D
-import org.scalajs.dom.html.Canvas
+import org.scalajs.dom.html.{Canvas, Div, Span}
 
 import scala.scalajs.js
 
 final class UniverseView(
-    canvas: dom.html.Canvas,
+    rootElement: Div,
     runningState: State[Boolean],
     universeState: State[Universe],
     universeChangesState: State[UniverseChanges],
@@ -23,7 +24,7 @@ final class UniverseView(
 
   private val GridOffset = 0
   private val CellBorderWidth = 1
-  private val CellSize = 32
+  private val CellSize = 16
 
   private var width = 0
   private var height = 0
@@ -37,9 +38,17 @@ final class UniverseView(
   private val lastDrewCursorState: State[Option[CellCoordinates]] =
     State(None)
 
+  private val canvas = rootElement.getChild[Canvas]("universe-view")
   private val ctx: CanvasRenderingContext2D =
     canvas.getContext("2d").asInstanceOf[dom.CanvasRenderingContext2D]
   ctx.imageSmoothingEnabled = true
+
+  private val spanCellCoords =
+    rootElement.getChild[Span]("span-cell-coords")
+  private val spanCellCoordRow =
+    spanCellCoords.getChild[Span]("span-cell-coord-row")
+  private val spanCellCoordCol =
+    spanCellCoords.getChild[Span]("span-cell-coord-col")
 
   canvas.onclick = (e: dom.MouseEvent) => canvasOnClick(e)
   canvas.onmousemove = (e: dom.MouseEvent) => canvasOnMouseMove(e)
@@ -50,6 +59,15 @@ final class UniverseView(
   zoomState.observe(_ => init())
   universeState.observe(drawUniverse)
   universeChangesState.observeAfter(drawUniverseChanges)
+  lastDrewCursorState.observe:
+    case Some(CellCoordinates(row, col)) =>
+      spanCellCoords.removeClass("hidden")
+      spanCellCoordRow.textContent = row.toString
+      spanCellCoordCol.textContent = col.toString
+    case _ =>
+      spanCellCoords.addClass("hidden")
+      spanCellCoordRow.textContent = "-1"
+      spanCellCoordCol.textContent = "-1"
 
   private def init(): Unit =
     width = universeState.now().width
@@ -69,6 +87,16 @@ final class UniverseView(
 
     ctx.translate(0.5, 0.5)
     drawGrid()
+
+    // clear initial alive cells
+    for
+      row <- 0 until height
+      col <- 0 until width
+    yield
+      val cellCoords = CellCoordinates(row, col)
+      if universeState.now().getCell(cellCoords) == Alive then
+        drawDeadCell(cellCoords)
+
     drawUniverse(universeState.now())
 
   private def drawGrid(): Unit =
@@ -112,7 +140,6 @@ final class UniverseView(
     val (cellCenterX, cellCenterY) = cellCoords.cellCenter
     val centerOffset = (CellSize * 0.1) / 2
     val cellSizeOffset = 0.9
-    drawDeadCell(cellCoords)
     ctx.fillStyle = AliveCellColor
     ctx.beginPath()
     ctx.rect(
@@ -173,7 +200,7 @@ final class UniverseView(
   private def canvasOnMouseMove(e: dom.MouseEvent): Unit =
     clientToCellCoordinates(e.clientX, e.clientY) match
       case Some(cellCoords) if !runningState.now() =>
-        drawCursor(cellCoords, mouseDown = false)
+        drawCursor(cellCoords, false)
         lastDrewCursorState.now() match
           case Some(lastCursorCellCoords)
               if lastCursorCellCoords != cellCoords =>

@@ -1,13 +1,17 @@
 package io.iyyel.game.of.life
 
-import io.iyyel.game.of.life.controls.{StartStopButton, UniverseView, ZoomControl}
+import io.iyyel.game.of.life.controls.*
+import io.iyyel.game.of.life.controls.NewUniverseModal.NewUniverseParams
 import io.iyyel.game.of.life.logic.{State, Universe, UniverseChanges}
+import io.iyyel.game.of.life.util.Extensions.getElement
 import org.scalajs.dom
-import org.scalajs.dom.html.{Button, Canvas, Input}
+import org.scalajs.dom.html.{Button, Div}
 
-import scala.concurrent.duration.DurationInt
+import scala.concurrent.duration.{DurationInt, FiniteDuration}
 import scala.scalajs.js.timers
 import scala.scalajs.js.timers.SetTimeoutHandle
+
+private[life] case class UniverseWithEpoch(universe: Universe, epoch: Int)
 
 @main
 def main(): Unit =
@@ -30,46 +34,60 @@ def main(): Unit =
       .setCellAlive(2, 32)
       .setCellAlive(2, 31)
   )
+  val currentEpochState: State[Int] = State[Int](1)
+  val universeEpochsState: State[List[UniverseWithEpoch]] =
+    State(List(UniverseWithEpoch(universeState.now(), currentEpochState.now())))
 
-  def setTimeoutOnNextUniverse(): SetTimeoutHandle =
-    val interval = 10.millis
-    timers.setTimeout(interval) {
-      if runningState.now() then
-        val newGen = universeState.now().nextGeneration()
-        universeState.update(_ => newGen._1)
-        universeChangesState.update(_ => newGen._2)
-        setTimeoutOnNextUniverse()
-    }
-  val timeout = setTimeoutOnNextUniverse()
+  val speedControl =
+    SpeedControl(dom.document.getElement[Div]("control-speed"))
 
-  val startStopButton = StartStopButton(
-    dom.document.getElementById("btn-start-stop").asInstanceOf[Button],
-    runningState
+  val clearButton =
+    UIButton(dom.document.getElement[Button]("btn-clear"))
+
+  val newUniverseModal = NewUniverseModal(
+    dom.document.getElement[Div]("modal-new-universe"),
+    universeSizeState
   )
 
-  val clearButton = controls.Button(
-    dom.document.getElementById("btn-clear").asInstanceOf[Button]
-  )
+  val randomUniverseButton =
+    UIButton(dom.document.getElement[Button]("btn-random"))
 
-  val zoomControl = ZoomControl(
-    dom.document.getElementById("zoom-slider").asInstanceOf[Input]
-  )
+  val zoomControl =
+    ZoomControl(dom.document.getElement[Div]("control-zoom"))
 
   val universeView = UniverseView(
-    dom.document.getElementById("canvas").asInstanceOf[Canvas],
+    dom.document.getElement[Div]("universe"),
     runningState,
     universeState,
     universeChangesState,
     zoomControl.zoomState
   )
 
-  runningState.observeAfter(
-    if _ then setTimeoutOnNextUniverse()
-    else timers.clearTimeout(timeout)
+  val startStopButton = StartStopButton(
+    dom.document.getElement[Button]("btn-start-stop"),
+    runningState
   )
 
+  val historyControl = HistoryControl(
+    dom.document.getElement[Div]("control-history"),
+    universeEpochsState,
+    runningState
+  )
+
+  def startNewHistory(universe: Universe): Unit =
+    runningState.set(false)
+    universeState.set(universe)
+    currentEpochState.set(1)
+    universeEpochsState.set(
+      List(UniverseWithEpoch(universeState.now(), currentEpochState.now()))
+    )
+
   universeView.cellPlaneClickState.observeAfter(cellCoords =>
-    if !runningState.now() then universeState.update(_.flipCell(cellCoords))
+    if !runningState.now() then
+      universeState.update(_.flipCell(cellCoords))
+      universeEpochsState.set(
+        List(UniverseWithEpoch(universeState.now(), currentEpochState.now()))
+      )
   )
 
   startStopButton.clickState.observeAfter(_ =>
@@ -77,6 +95,69 @@ def main(): Unit =
   )
 
   clearButton.clickState.observeAfter(_ =>
-    universeState.update(universe => universe.clear())
+    universeState.update(_.clear())
     runningState.set(false)
+  )
+
+  randomUniverseButton.clickState.observeAfter(_ =>
+    universeState.set(
+      Universe.random(universeSizeState.now(), universeSizeState.now())
+    )
+  )
+
+  newUniverseModal.newUniverseParamsState.observeAfter(_ =>
+    val NewUniverseParams(size, random) =
+      newUniverseModal.newUniverseParamsState.now()
+    universeSizeState.set(size)
+    val newUniverse =
+      if random then Universe.random(size, size)
+      else Universe(size, size)
+    // startNewHistory
+    universeState.set(newUniverse)
+  )
+
+  historyControl.selectionState.observeAfter(_ =>
+    if !runningState.now() then
+      val UniverseWithEpoch(universe, epoch) = universeEpochsState
+        .now()
+        .takeRight(historyControl.selectionState.now())
+        .head
+      universeState.set(universe)
+      currentEpochState.set(epoch)
+  )
+
+  def speedToDuration(speed: Int): FiniteDuration =
+    speed match
+      case 1 => 1000.millis
+      case 2 => 700.millis
+      case 3 => 500.millis
+      case 4 => 300.millis
+      case 5 => 200.millis
+      case 6 => 100.millis
+      case 7 => 50.millis
+      case 8 => 10.millis
+
+  def setTimeoutOnNextUniverse(): SetTimeoutHandle =
+    val interval = speedToDuration(speedControl.speedState.now())
+    timers.setTimeout(interval) {
+      if runningState.now() then
+        val newGen = universeState.now().nextGeneration()
+        universeState.set(newGen._1)
+        universeChangesState.set(newGen._2)
+        val newEpoch =
+          universeEpochsState.now().headOption.map(_.epoch).getOrElse(0) + 1
+        currentEpochState.set(newEpoch)
+        universeEpochsState.update(UniverseWithEpoch(newGen._1, newEpoch) :: _)
+        setTimeoutOnNextUniverse()
+    }
+
+  val timeout = setTimeoutOnNextUniverse()
+
+  runningState.observeAfter(
+    if _ then
+      val lastEpoch = universeEpochsState.now().head.epoch
+      val toDrop = lastEpoch - currentEpochState.now()
+      universeEpochsState.update(_.drop(toDrop))
+      setTimeoutOnNextUniverse()
+    else timers.clearTimeout(timeout)
   )

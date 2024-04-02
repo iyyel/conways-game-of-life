@@ -2,47 +2,164 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <link rel="icon" href="/assets/favicon.ico" sizes="32x32">
     <!--- <link rel="icon" href="/assets/icon.svg" type="image/svg+xml"> --->
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.webmanifest">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Conway's Game of Life | @iyyel</title>
 </head>
 
 <body>
-<div id="app">
-    <div class="row" style="margin-bottom: 1em;">
-        <div class="col-xs-6">
-            <div class="pull-left">
-                <button id="btn-start-stop" type="button" class="btn btn-default btn-sm" style="margin-top: 4px;">
-                    <span class="btn-label">Start</span>
-                </button>
-                <button id="btn-clear" type="button" class="btn btn-warning btn-sm">
+    <div id="app" class="grid grid-cols-2 justify-items-center gap-4">
+
+        <!-- Grid col 1, row 1 -->
+        <div id="page-header" class="col-span-2">
+            <h1
+                class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl dark:text-white">
+                Conway's Game of Life in Scala.js</h1>
+
+            <p>This is an implementation of <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's
+                    Game of Life</a>
+                with <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    href="https://www.scala-js.org/">Scala.js</a> and <a
+                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    href="https://github.com/raquo/Airstream/">Airstream</a>. Styled with <a
+                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    href="https://github.com/tailwindlabs/tailwindcss/">Tailwind</a> CSS.</p>
+
+            <p>Created by <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    href="https://iyyel.io/">Daniel "iyyel" Larsen</a> with inspiration from <a
+                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://ivanyu.me/">Ivan
+                    Yurchenko</a>.
+                The code is on <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    href="https://github.com/iyyel/game-of-life-scala/">GitHub</a>.
+                License is <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    href="https://github.com/iyyel/game-of-life-scala/blob/main/LICENSE.md/">MIT</a>.</p>
+            <hr class="my-2 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
+        </div>
+
+
+        <!-- Grid col 1, row 2 -->
+        <div class="grid grid-cols-subgrid col-span-2">
+            <!-- Subgrid col 1, row 1 -->
+            <div id="button-controls" class="col-span-1 justify-self-end">
+                <button id="btn-clear"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+                    type="button">
                     <span class="btn-label">Clear</span>
                 </button>
-                <button id="btn-random" type="button" class="btn btn-warning btn-sm">
-                    <span class="btn-label">Random seed</span>
+
+                <button id="btn-random"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+                    type="button">
+                    <span class="btn-label">Random universe</span>
                 </button>
-                <button class="btn btn-success btn-sm"
-                        type="button"
-                        data-toggle="modal"
-                        data-target="#modal-new-universe">
+
+                <button type="button"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+                    data-toggle="modal" data-target="#modal-new-universe">
                     <span class="btn-label">New universe</span>
                 </button>
-                <div id="zoom-slider-container">
-                    <label for="zoom-slider"></label>
-                    <input id="zoom-slider" type="range" min="1" max="10" value="5" class="slider">
-                    <div class="slider-label" id="sliderValue">50</div>
+
+                <br />
+
+                <button id="btn-start-stop"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+                    type="button">
+                    <span class="btn-label">Start</span>
+                </button>
+            </div>
+
+            <!-- Subgrid col 2, row 1 -->
+            <div id="slider-controls" class="col-span-1 justify-self-start">
+                <table>
+                    <tr>
+                        <th><label for="slider-speed"
+                                class="mb-2 inline-block text-neutral-700 dark:text-neutral-200">Speed:
+                            </label></th>
+                        <td>
+                            <div id="control-speed" class="flex">
+                                <input id="slider-speed"
+                                    class="transparent h-[4px] w-full cursor-pointer appearance-auto border-transparent bg-neutral-200 dark:bg-neutral-600"
+                                    type="range" value="6" min="1" max="8">
+                                <span id="span-speed" class="inline-block">6</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="slider-zoom"
+                                class="mb-2 inline-block text-neutral-700 dark:text-neutral-200">Zoom: </label></th>
+                        <td>
+                            <div id="control-zoom" class="flex">
+                                <input id="slider-zoom"
+                                    class="transparent h-[4px] w-full cursor-pointer appearance-auto border-transparent bg-neutral-200 dark:bg-neutral-600"
+                                    type="range" value="4" min="1" max="8">
+                                <span id="span-zoom">1.00x</span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Grid col 1, row 3 -->
+        <div id="universe" class="col-span-2 text-center">
+            <!-- Subgrid col 1, row 1 -->
+            <canvas id="universe-view">
+            </canvas>
+            <!-- Subgrid col 1, row 2 -->
+            <span id="span-cell-coords">
+                <span id="span-cell-coord-row">0</span>x<span id="span-cell-coord-col">0</span>
+            </span>
+        </div>
+
+
+        <!-- Grid col 1, row 4 -->
+        <div id="control-history" class="col-span-2">
+            <h4>A brief history of Time</h4>
+            <label for="slider-history"></label>
+            <input id="slider-history" type="range">
+            <div>
+                Epoch: <span id="span-time-length">1</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-new-universe" class="hidden" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div>
+            <div>
+                <div>
+                    <button type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4>Create a new universe</h4>
+                </div>
+                <div>
+                    <div id="modal-new-universe-slider">
+                        <label for="slider-new-universe-size">Size: </label>
+                        <input id="slider-new-universe-size" type="range">
+                        <span id="span-new-universe-size">35</span>
+                    </div>
+                    <div>
+                        <label>
+                            <input id="cb-new-universe-random-seed" type="checkbox" checked> Seed randomly
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <button type="button" data-dismiss="modal">Cancel
+                    </button>
+                    <button id="btn-create-universe" type="button">Create
+                    </button>
                 </div>
             </div>
         </div>
-        <canvas id="canvas">
-        </canvas>
     </div>
-</div>
-<script type="module" src="/main.js"></script>
+    <script type="module" src="/main.js"></script>
 </body>
 
 </html>
