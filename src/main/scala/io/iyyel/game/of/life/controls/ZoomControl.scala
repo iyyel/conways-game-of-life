@@ -9,7 +9,7 @@ import scala.scalajs.js
 
 final class ZoomControl(rootElement: Div):
   private val slider = Slider(rootElement.getChild[Input]("slider-zoom"))
-  slider.init(4, 1, 8)
+  slider.init(4, 1, 7)
 
   private val spanZoom = rootElement.getChild[Span]("span-zoom")
 
@@ -31,4 +31,3 @@ final class ZoomControl(rootElement: Div):
       case 5 => 1.25
       case 6 => 1.50
       case 7 => 1.75
-      case 8 => 2.00

@@ -16,7 +16,7 @@ private[life] case class UniverseWithEpoch(universe: Universe, epoch: Int)
 @main
 def main(): Unit =
   val runningState: State[Boolean] = State(false)
-  val universeSizeState: State[Int] = State(35)
+  val universeSizeState: State[Int] = State(30)
   val universeChangesState: State[UniverseChanges] = State(null)
   val universeState: State[Universe] = State(
     Universe(universeSizeState.now(), universeSizeState.now())
@@ -28,11 +28,11 @@ def main(): Unit =
       .setCellAlive(2, 2)
 
       // Right glider
-      .setCellAlive(0, 32)
-      .setCellAlive(1, 31)
-      .setCellAlive(2, 33)
-      .setCellAlive(2, 32)
-      .setCellAlive(2, 31)
+      .setCellAlive(0, 26)
+      .setCellAlive(1, 25)
+      .setCellAlive(2, 27)
+      .setCellAlive(2, 26)
+      .setCellAlive(2, 25)
   )
   val currentEpochState: State[Int] = State[Int](1)
   val universeEpochsState: State[List[UniverseWithEpoch]] =
@@ -85,6 +85,7 @@ def main(): Unit =
   universeView.cellPlaneClickState.observeAfter(cellCoords =>
     if !runningState.now() then
       universeState.update(_.flipCell(cellCoords))
+      currentEpochState.set(1)
       universeEpochsState.set(
         List(UniverseWithEpoch(universeState.now(), currentEpochState.now()))
       )
@@ -95,12 +96,11 @@ def main(): Unit =
   )
 
   clearButton.clickState.observeAfter(_ =>
-    universeState.update(_.clear())
-    runningState.set(false)
+    startNewHistory(universeState.now().clear())
   )
 
   randomUniverseButton.clickState.observeAfter(_ =>
-    universeState.set(
+    startNewHistory(
       Universe.random(universeSizeState.now(), universeSizeState.now())
     )
   )
@@ -112,8 +112,7 @@ def main(): Unit =
     val newUniverse =
       if random then Universe.random(size, size)
       else Universe(size, size)
-    // startNewHistory
-    universeState.set(newUniverse)
+    startNewHistory(newUniverse)
   )
 
   historyControl.selectionState.observeAfter(_ =>
@@ -128,14 +127,13 @@ def main(): Unit =
 
   def speedToDuration(speed: Int): FiniteDuration =
     speed match
-      case 1 => 1000.millis
-      case 2 => 700.millis
-      case 3 => 500.millis
-      case 4 => 300.millis
-      case 5 => 200.millis
-      case 6 => 100.millis
-      case 7 => 50.millis
-      case 8 => 10.millis
+      case 1 => 800.millis // 0.12×
+      case 2 => 400.millis // 0.25×
+      case 3 => 200.millis // 0.50×
+      case 4 => 100.millis // 1.00×
+      case 5 => 50.millis // 2.00×
+      case 6 => 25.millis // 4.00×
+      case 7 => 12.millis // 8.00×
 
   def setTimeoutOnNextUniverse(): SetTimeoutHandle =
     val interval = speedToDuration(speedControl.speedState.now())

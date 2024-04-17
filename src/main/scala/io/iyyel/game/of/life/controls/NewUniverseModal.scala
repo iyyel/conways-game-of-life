@@ -17,7 +17,7 @@ final class NewUniverseModal(
 
   private val slider =
     Slider(rootElement.getChild[Input]("slider-new-universe-size"))
-  slider.init(35, 10, 150)
+  slider.init(30, 10, 150)
 
   private val spanZoom =
     rootElement.getChild[Span]("span-new-universe-size")
@@ -36,7 +36,6 @@ final class NewUniverseModal(
     val size = slider.value
     val random = btnRandom.checked
     newUniverseParamsState.set(NewUniverseParams(size, random))
-    // modalDyn.modal("hide")
     true.asInstanceOf[js.Dynamic]
 
   universeSizeState.observe(slider.value = _)

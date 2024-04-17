@@ -13,7 +13,7 @@ final class HistoryControl(
     val runningState: State[Boolean]
 ):
   private val slider = Slider(rootElement.getChild[Input]("slider-history"))
-  slider.init(0, 1, 200, true)
+  slider.init(0, 1, 0, true)
 
   private val spanTimeLength = rootElement.getChild[Span]("span-time-length")
 
@@ -22,7 +22,7 @@ final class HistoryControl(
   private val disabledState =
     State[Boolean](runningState.now() || universeEpochsState.now().isEmpty)
 
-  disabledState.observe(slider.disabled = _)
+  disabledState.observeAfter(slider.disabled = _)
 
   universeEpochsState.observe(universeEpochs =>
     val lastEpoch = universeEpochs.headOption.map(_.epoch).getOrElse(0)

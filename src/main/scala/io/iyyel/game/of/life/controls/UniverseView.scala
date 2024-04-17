@@ -61,11 +61,11 @@ final class UniverseView(
   universeChangesState.observeAfter(drawUniverseChanges)
   lastDrewCursorState.observe:
     case Some(CellCoordinates(row, col)) =>
-      spanCellCoords.removeClass("hidden")
+      spanCellCoords.removeClass("invisible")
       spanCellCoordRow.textContent = row.toString
       spanCellCoordCol.textContent = col.toString
     case _ =>
-      spanCellCoords.addClass("hidden")
+      spanCellCoords.addClass("invisible")
       spanCellCoordRow.textContent = "-1"
       spanCellCoordCol.textContent = "-1"
 
