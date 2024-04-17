@@ -9,7 +9,7 @@ lazy val gameOfLifeScala = project
     scalaJSLinkerConfig ~= {
       _.withModuleKind(ModuleKind.ESModule)
         .withModuleSplitStyle(
-          ModuleSplitStyle.SmallModulesFor(List("game-of-life-scala"))
+          ModuleSplitStyle.SmallModulesFor(List("life"))
         )
     },
     libraryDependencies ++= Seq(

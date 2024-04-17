@@ -18,19 +18,19 @@ final case class CellPlane private[logic] (
     cells: Vector[Cell]
 ) extends CellPlaneBase:
   def setCellAlive(cellCoords: CellCoordinates): CellPlane =
-    setCellAliveByPlaneCoords(cellCoords.toPlaneCoordinates)
+    setCellAliveByPlaneCoordinates(cellCoords.toPlaneCoordinates)
 
   def setCellDead(cellCoords: CellCoordinates): CellPlane =
-    setCellDeadByPlaneCoords(cellCoords.toPlaneCoordinates)
+    setCellDeadByPlaneCoordinates(cellCoords.toPlaneCoordinates)
 
   def flipCell(cellCoords: CellCoordinates): CellPlane =
     val planeCoords = cellCoords.toPlaneCoordinates
     val cell = cells(planeCoords)
     cell match
       case Alive =>
-        setCellDeadByPlaneCoords(planeCoords)
+        setCellDeadByPlaneCoordinates(planeCoords)
       case Dead =>
-        setCellAliveByPlaneCoords(planeCoords)
+        setCellAliveByPlaneCoordinates(planeCoords)
       case _ =>
         this
 
@@ -62,10 +62,10 @@ final case class CellPlane private[logic] (
       CellCoordinates(row, colLeft)
     )
 
-  private def setCellAliveByPlaneCoords(planeCoords: Int): CellPlane =
+  private def setCellAliveByPlaneCoordinates(planeCoords: Int): CellPlane =
     copy(cells.updated(planeCoords, Alive))
 
-  private def setCellDeadByPlaneCoords(planeCoords: Int): CellPlane =
+  private def setCellDeadByPlaneCoordinates(planeCoords: Int): CellPlane =
     copy(cells.updated(planeCoords, Dead))
 
   private def copy(cells: Vector[Cell]): CellPlane =

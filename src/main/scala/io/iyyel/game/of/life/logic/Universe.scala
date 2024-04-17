@@ -1,7 +1,12 @@
 package io.iyyel.game.of.life.logic
 
 import io.iyyel.game.of.life.*
-import io.iyyel.game.of.life.logic.CellPlane.{Alive, CellCoordinates, Dead, Unchanged}
+import io.iyyel.game.of.life.logic.CellPlane.{
+  Alive,
+  CellCoordinates,
+  Dead,
+  Unchanged
+}
 
 import scala.util.Random
 
