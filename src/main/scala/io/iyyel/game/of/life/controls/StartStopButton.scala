@@ -4,6 +4,7 @@ import io.iyyel.game.of.life.logic.State
 import org.scalajs.dom
 import org.scalajs.dom.html.{Button, Span}
 import io.iyyel.game.of.life.util.Extensions.{addClass, removeClass}
+import io.iyyel.game.of.life.util.Extensions.getChild
 
 final class StartStopButton(
     val btnElement: Button,
@@ -11,27 +12,25 @@ final class StartStopButton(
 ):
   val clickState: State[Boolean] = State(false)
 
-  private val label = btnElement
-    .getElementsByClassName("btn-label")(0)
-    .asInstanceOf[Span]
+  private val label =
+    btnElement.getChild[Span]("btn-label")
 
-  private val symbol = btnElement
-    .getElementsByClassName("btn-icon")(0)
-    .asInstanceOf[Span]
+  private val icon =
+    btnElement.getChild[Span]("btn-icon")
 
   btnElement.onclick = (* : dom.Event) => clickState.update(click => !click)
 
   runningState.observe({ running =>
     if running then
       label.textContent = "Stop simulation"
-      btnElement.addClass("stop-button")
-      btnElement.removeClass("start-button")
-      symbol.addClass("stop-icon")
-      symbol.removeClass("start-icon")
+      btnElement.addClass("stop-btn")
+      btnElement.removeClass("start-btn")
+      icon.addClass("stop-icon")
+      icon.removeClass("start-icon")
     else
       label.textContent = "Start simulation"
-      btnElement.addClass("start-button")
-      btnElement.removeClass("stop-button")
-      symbol.addClass("start-icon")
-      symbol.removeClass("stop-icon")
+      btnElement.addClass("start-btn")
+      btnElement.removeClass("stop-btn")
+      icon.addClass("start-icon")
+      icon.removeClass("stop-icon")
   })

@@ -16,7 +16,7 @@ private[life] case class UniverseWithEpoch(universe: Universe, epoch: Int)
 @main
 def main(): Unit =
   val runningState: State[Boolean] = State(false)
-  val universeSizeState: State[Int] = State(30)
+  val universeSizeState: State[Int] = State(35)
   val universeChangesState: State[UniverseChanges] = State(null)
   val universeState: State[Universe] = State(
     Universe(universeSizeState.now(), universeSizeState.now())
@@ -28,11 +28,11 @@ def main(): Unit =
       .setCellAlive(2, 2)
 
       // Right glider
-      .setCellAlive(0, 26)
-      .setCellAlive(1, 25)
-      .setCellAlive(2, 27)
-      .setCellAlive(2, 26)
-      .setCellAlive(2, 25)
+      .setCellAlive(0, 32)
+      .setCellAlive(1, 31)
+      .setCellAlive(2, 33)
+      .setCellAlive(2, 32)
+      .setCellAlive(2, 31)
   )
   val currentEpochState: State[Int] = State[Int](1)
   val universeEpochsState: State[List[UniverseWithEpoch]] =
