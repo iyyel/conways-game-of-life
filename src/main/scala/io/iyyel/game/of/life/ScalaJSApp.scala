@@ -118,13 +118,13 @@ def main(): Unit =
 
   def speedToDuration(speed: Int): FiniteDuration =
     speed match
-      case 1 => 800.millis // 0.12×
-      case 2 => 400.millis // 0.25×
-      case 3 => 200.millis // 0.50×
-      case 4 => 100.millis // 1.00×
-      case 5 => 50.millis // 2.00×
-      case 6 => 25.millis // 4.00×
-      case 7 => 12.millis // 8.00×
+      case 1 => 800.millis
+      case 2 => 400.millis
+      case 3 => 200.millis
+      case 4 => 100.millis
+      case 5 => 50.millis
+      case 6 => 25.millis
+      case 7 => 12.millis
 
   def setTimeoutOnNextUniverse(): SetTimeoutHandle =
     val interval = speedToDuration(speedControl.speedState.now())

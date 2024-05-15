@@ -24,7 +24,7 @@ final class SpeedControl(rootElement: Div):
 
   def speedToTimes(speed: Int): Double =
     speed match
-      case 1 => 0.12
+      case 1 => 0.10
       case 2 => 0.25
       case 3 => 0.50
       case 4 => 1.00

@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" href="/assets/favicon.ico" sizes="32x32">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,19 +48,19 @@
 
       <div class="flex flex-wrap items-center justify-center mt-5 mb-5">
         <a href="https://www.scala-lang.org" class="flex-grow-0">
-          <img src="assets/img/scala_logo.svg" class="header-icon" alt="Scala logo">
+          <img src="/assets/img/scala_logo.svg" class="header-icon" alt="Scala logo">
         </a>
 
         <a href="https://www.scala-js.org" class="flex-grow-0 mt-3 md:mt-0">
-          <img src="assets/img/scala-js_logo.svg" class="header-icon" alt="Scala.js icon">
+          <img src="/assets/img/scala-js_logo.svg" class="header-icon" alt="Scala.js icon">
         </a>
 
         <a href="https://vitejs.dev" class="flex-grow-0 ml-3 mt-3 md:mt-0">
-          <img src="assets/img/vitejs_logo.svg" class="header-icon" alt="Vite.js icon">
+          <img src="/assets/img/vitejs_logo.svg" class="header-icon" alt="Vite.js icon">
         </a>
 
         <a href="https://tailwindcss.com" class="flex-grow-0 ml-3 mt-3 md:mt-0">
-          <img src="assets/img/tailwind-css_logo.svg" class="header-icon" alt="Tailwind CSS icon">
+          <img src="/assets/img/tailwind-css_logo.svg" class="header-icon" alt="Tailwind CSS icon">
         </a>
       </div>
 
@@ -74,25 +74,25 @@
 
         <div class="flex flex-wrap gap-2 justify-end md:w-1/2">
           <button id="btn-clear" class="clear-btn" type="button">
-            <img src="assets/img/clear_icon.svg" class="btn-icon white-icon" alt="Clear icon">
+            <img src="/assets/img/clear_icon.svg" class="btn-icon white-icon" alt="Clear icon">
             <span id="btn-label">Clear universe</span>
           </button>
 
           <button id="btn-random" class="random-universe-btn" type="button">
-            <img src="assets/img/random_icon.svg" class="btn-icon white-icon" alt="Random icon">
+            <img src="/assets/img/random_icon.svg" class="btn-icon white-icon" alt="Random icon">
             <span id="btn-label">Random universe</span>
           </button>
         </div>
 
         <div class="flex flex-wrap gap-2 justify-end md:w-1/2">
           <button id="btn-new-universe" class="new-universe-btn" onclick="location.href='#modal-new-universe'">
-            <img src="assets/img/universe_icon.svg" class="btn-icon white-icon" alt="New universe icon">
+            <img src="/assets/img/universe_icon.svg" class="btn-icon white-icon" alt="New universe icon">
             <span id="btn-label">New universe</span>
           </button>
 
           <button id="btn-predefined-universe" class="predefined-universe-btn"
             onclick="location.href='#modal-predefined-universe'">
-            <img src="assets/img/globe_icon.svg" class="btn-icon white-icon" alt="New universe icon">
+            <img src="/assets/img/globe_icon.svg" class="btn-icon white-icon" alt="New universe icon">
             <span id="btn-label">Predefined universe</span>
           </button>
         </div>
@@ -181,21 +181,20 @@
       <p>Unfortunately, the history is unbounded and may consume lots of memory with time.</p>
 
       <div class="flex flex-wrap gap-6 mt-4">
+        <a href="https://iyyel.io">
+          <img src="/assets/img/home_icon.svg" class="small-icon white-icon" alt="Home icon">
+        </a>
 
         <a href="https://github.com/iyyel">
-          <img src=" assets/img/github_icon.svg" class="social-icon white-icon" alt="GitHub icon">
+          <img src="/assets/img/github_icon.svg" class="small-icon white-icon" alt="GitHub icon">
         </a>
 
         <a href="https://www.linkedin.com/in/iyyel">
-          <img src=" assets/img/linkedin_icon.svg" class="social-icon white-icon" alt="LinkedIn icon">
+          <img src="/assets/img/linkedin_icon.svg" class="small-icon white-icon" alt="LinkedIn icon">
         </a>
 
         <a href="mailto:hello@iyyel.io">
-          <img src=" assets/img/mail_icon.svg" class="social-icon white-icon" alt="E-mail icon">
-        </a>
-
-        <a href="https://iyyel.io">
-          <span class="font-bold font-heading">iyyel.io</span>
+          <img src="/assets/img/mail_icon.svg" class="small-icon white-icon" alt="E-mail icon">
         </a>
       </div>
     </div>
@@ -207,7 +206,7 @@
         <div class="flex justify-between mb-4">
           <h3 class="smallheader-text mb-2">Create a new universe</h3>
           <button onclick="location.href='#'">
-            <img src="assets/img/close_icon.svg" class="small-icon white-icon hover-icon" alt="Close icon">
+            <img src="/assets/img/close_icon.svg" class="small-icon white-icon hover-icon" alt="Close icon">
           </button>
         </div>
 
@@ -240,26 +239,26 @@
         <div class="flex justify-between mb-4">
           <h3 class="smallheader-text mb-2">Select a predefined universe</h3>
           <button onclick="location.href='#'">
-            <img src="assets/img/close_icon.svg" class="small-icon white-icon hover-icon" alt="Close icon">
+            <img src="/assets/img/close_icon.svg" class="small-icon white-icon hover-icon" alt="Close icon">
           </button>
         </div>
 
         <div class="flex space-x-4 mb-4">
-          <button id="btn-glider" class="card-container hover:bg-blue-200">
+          <button id="btn-glider" class="card-container">
             <div class="p-4">
               <h3 class="card-header">Glider</h3>
               <p class="card-content">Moves across the universe</p>
             </div>
           </button>
 
-          <button id="btn-beehive" class="card-container hover:bg-green-200">
+          <button id="btn-beehive" class="card-container">
             <div class="p-4">
               <h3 class="card-header">Beehive</h3>
               <p class="card-content">It does nothing</p>
             </div>
           </button>
 
-          <button id="btn-blinker" class="card-container hover:bg-red-200">
+          <button id="btn-blinker" class="card-container">
             <div class="p-4">
               <h3 class="card-header">Blinker</h3>
               <p class="card-content">A small oscillator</p>
@@ -268,21 +267,21 @@
         </button>
 
         <div class="flex space-x-4 mb-4">
-          <button id="btn-toad" class="card-container hover:bg-pink-200">
+          <button id="btn-toad" class="card-container">
             <div class="p-4">
               <h3 class="card-header">Toad</h3>
               <p class="card-content">Another oscillator</p>
             </div>
           </button>
 
-          <button id="btn-beacon" class="card-container hover:bg-lime-200">
+          <button id="btn-beacon" class="card-container">
             <div class="p-4">
               <h3 class="card-header">Beacon</h3>
               <p class="card-content">Yet another oscillator</p>
             </div>
           </button>
 
-          <button id="btn-two-gliders" class="card-container hover:bg-fuchsia-200">
+          <button id="btn-two-gliders" class="card-container">
             <div class="p-4">
               <h3 class="card-header">Two Gliders</h3>
               <p class="card-content">Two gliders that move into eachother</p>
@@ -291,21 +290,21 @@
         </div>
 
         <div class="flex space-x-4 mb-4">
-          <button id="btn-lightweight-spaceship" class="card-container hover:bg-amber-200">
+          <button id="btn-lightweight-spaceship" class="card-container">
             <div class="p-4">
               <h3 class="card-header">Lightweight Spaceship</h3>
               <p class="card-content">Also moves across the universe</p>
             </div>
           </button>
 
-          <button id="btn-pulsar" class="card-container hover:bg-yellow-200">
+          <button id="btn-pulsar" class="card-container">
             <div class="p-4">
               <h3 class="card-header">Pulsar</h3>
               <p class="card-content">A more advanced oscillator</p>
             </div>
           </button>
 
-          <button id="btn-gospers-glider-gun" class="card-container hover:bg-cyan-200">
+          <button id="btn-gospers-glider-gun" class="card-container">
             <div class="p-4">
               <h3 class="card-header">Gosper's Glider Gun</h3>
               <p class="card-content">A gun that produces gliders</p>

@@ -68,7 +68,31 @@
 }
 
 .slider-input {
-  @apply cursor-pointer appearance-none border-transparent bg-green-500 hover:bg-green-700 w-64 h-2 rounded-full focus:outline-none disabled:bg-green-900
+  @apply cursor-pointer appearance-none border-transparent bg-green-500 hover:bg-green-700 w-64 h-2 rounded-full focus:outline-none disabled:bg-green-900 disabled:cursor-not-allowed thumb-color-green
+}
+
+.thumb-color-green::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 bg-emerald-200 hover:bg-emerald-100 rounded-full cursor-pointer
+}
+
+.thumb-color-green::-moz-range-thumb {
+  @apply appearance-none w-4 h-4 bg-emerald-200 hover:bg-emerald-100 rounded-full cursor-pointer
+}
+
+.thumb-color-green::-ms-thumb {
+  @apply appearance-none w-4 h-4 bg-emerald-200 hover:bg-emerald-100 rounded-full cursor-pointer
+}
+
+.thumb-color-green:disabled::-webkit-slider-thumb {
+  @apply bg-emerald-700 cursor-not-allowed;
+}
+
+.thumb-color-green:disabled::-moz-range-thumb {
+  @apply bg-emerald-700 cursor-not-allowed;
+}
+
+.thumb-color-green:disabled::-ms-thumb {
+  @apply bg-emerald-700 cursor-not-allowed;
 }
 
 .checkbox-input {
@@ -91,12 +115,8 @@
   @apply w-16 h-16
 }
 
-.social-icon {
-  @apply w-8 h-8
-}
-
 .small-icon {
-  @apply w-6 h-6
+  @apply w-6 h-6 mb-1
 }
 
 .btn-icon {
@@ -110,7 +130,7 @@
 .start-icon {
   width: 1rem;
   height: 1rem;
-  background-image: url('assets/img/start_icon.svg');
+  background-image: url('/assets/img/start_icon.svg');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -118,7 +138,7 @@
 .stop-icon {
   width: 1rem;
   height: 1rem;
-  background-image: url('assets/img/stop_icon.svg');
+  background-image: url('/assets/img/stop_icon.svg');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -146,12 +166,12 @@
 }
 
 .hover-icon:hover {
-  filter: brightness(50%);
+  filter: invert(92%) sepia(0%) saturate(1%) hue-rotate(75deg) brightness(90%) contrast(91%);
 }
 
 .card-container {
   background-color: #465E6B;
-  @apply shadow-md rounded-lg overflow-hidden flex-1 transition-colors duration-300
+  @apply shadow-md rounded-lg overflow-hidden flex-1 transition-colors duration-300 hover:bg-emerald-400
 }
 
 .card-header {
@@ -163,17 +183,17 @@
 }
 
 #modal-new-universe:target {
-  display: flex;
+  display: flex
 }
 
 #modal-new-universe:target #modal-overlay {
-  display: block;
+  display: block
 }
 
 #modal-predefined-universe:target {
-  display: flex;
+  display: flex
 }
 
 #modal-predefined-universe:target #modal-overlay {
-  display: block;
+  display: block
 }
