@@ -3,10 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="https://rsms.me/inter/inter.css"> <!-- TOOD: TailwindUI Font, maybe remove?-->
-  <link rel="icon" href="/assets/favicon.ico" sizes="32x32">
-  <!--- <link rel="icon" href="/assets/icon.svg" type="image/svg+xml"> --->
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,9 +31,6 @@
         <a class="text-link" href="https://www.scala-js.org">Scala.js</a>
         and
         <a class="text-link" href="https://github.com/raquo/Airstream/">Airstream</a>.
-      </p>
-
-      <p>
         Developed using
         <a class="text-link" href="https://vitejs.dev">Vite.js</a>
         and styled with
@@ -47,28 +42,25 @@
         <a class="text-link" href="https://iyyel.io/">Daniel Larsen (@iyyel)</a>
         with inspiration from
         <a class="text-link" href="https://ivanyu.me/">Ivan Yurchenko</a>.
-      </p>
-
-      <p>
         The code is on <a class="text-link" href="https://github.com/iyyel/game-of-life-scala">GitHub</a>.
         License is <a class="text-link" href="https://github.com/iyyel/game-of-life-scala/blob/main/LICENSE.md">MIT</a>.
       </p>
 
       <div class="flex flex-wrap items-center justify-center mt-5 mb-5">
         <a href="https://www.scala-lang.org" class="flex-grow-0">
-          <img src=" assets/icon/scala-logo.svg" alt="Scala logo" class="header-icon">
+          <img src="/assets/img/scala_logo.svg" class="header-icon" alt="Scala logo">
         </a>
 
         <a href="https://www.scala-js.org" class="flex-grow-0 mt-3 md:mt-0">
-          <img src="assets/icon/scala-js_logo.svg" alt="Scala.js icon" class="header-icon">
+          <img src="/assets/img/scala-js_logo.svg" class="header-icon" alt="Scala.js icon">
         </a>
 
         <a href="https://vitejs.dev" class="flex-grow-0 ml-3 mt-3 md:mt-0">
-          <img src="assets/icon/vitejs-logo.svg" alt="Vite.js icon" class="header-icon">
+          <img src="/assets/img/vitejs_logo.svg" class="header-icon" alt="Vite.js icon">
         </a>
 
         <a href="https://tailwindcss.com" class="flex-grow-0 ml-3 mt-3 md:mt-0">
-          <img src="assets/icon/tailwind-css_logo.svg" alt="Tailwind CSS icon" class="header-icon">
+          <img src="/assets/img/tailwind-css_logo.svg" class="header-icon" alt="Tailwind CSS icon">
         </a>
       </div>
 
@@ -78,35 +70,43 @@
     <!-- Grid col 1, row 2 -->
     <div class="grid grid-cols-subgrid col-span-2">
       <!-- Subgrid col 1, row 1 -->
-      <div id="button-controls" class="grid col-span-1 grid-cols-2 justify-self-end gap-2">
-        <button id="btn-clear" class="clear-button" type="button">
-          <span class="btn-icon clear-icon pr-6"></span>
-          <span class="btn-label">Clear universe</span>
-        </button>
+      <div id="button-controls" class="flex flex-wrap justify-end gap-2">
 
-        <button id="btn-random" class="random-universe-button" type="button">
-          <span class="btn-icon random-icon pr-6"></span>
-          <span class="btn-label">Random universe</span>
-        </button>
+        <div class="flex flex-wrap gap-2 justify-end md:w-1/2">
+          <button id="btn-clear" class="clear-btn" type="button">
+            <img src="/assets/img/clear_icon.svg" class="btn-icon white-icon" alt="Clear icon">
+            <span id="btn-label">Clear universe</span>
+          </button>
 
-        <button class="new-universe-button" onclick="location.href='#modal-new-universe'">
-          <span class="btn-icon universe-icon pr-6"></span>
-          <span class="btn-label">New universe</span>
-        </button>
+          <button id="btn-random" class="random-universe-btn" type="button">
+            <img src="/assets/img/random_icon.svg" class="btn-icon white-icon" alt="Random icon">
+            <span id="btn-label">Random universe</span>
+          </button>
+        </div>
 
-        <button class="predefined-universe-button">
-          <span class="btn-icon predefined-universe-icon pr-6"></span>
-          <span class="btn-label">Predefined universe</span>
-        </button>
+        <div class="flex flex-wrap gap-2 justify-end md:w-1/2">
+          <button id="btn-new-universe" class="new-universe-btn" onclick="location.href='#modal-new-universe'">
+            <img src="/assets/img/universe_icon.svg" class="btn-icon white-icon" alt="New universe icon">
+            <span id="btn-label">New universe</span>
+          </button>
 
-        <button id="btn-start-stop" class="start-button" type="button">
-          <span class="btn-icon start-icon pr-6"></span>
-          <span class="btn-label">Start simulation</span>
-        </button>
+          <button id="btn-predefined-universe" class="predefined-universe-btn"
+            onclick="location.href='#modal-predefined-universe'">
+            <img src="/assets/img/globe_icon.svg" class="btn-icon white-icon" alt="New universe icon">
+            <span id="btn-label">Predefined universe</span>
+          </button>
+        </div>
+
+        <div class="flex w-full justify-end gap-2">
+          <button id="btn-start-stop" class="start-btn" type="button">
+            <span id="btn-icon" class="btn-icon white-icon start-icon"></span>
+            <span id="btn-label">Start simulation</span>
+          </button>
+        </div>
       </div>
 
       <!-- Subgrid col 2, row 1 -->
-      <div id="slider-controls" class="col-span-1 justify-self-start">
+      <div id="slider-controls" class="flex flex-wrap justify-start gap-2">
         <table>
           <tr>
             <th class="text-right pr-2">
@@ -115,29 +115,29 @@
             <td>
               <div id="control-speed" class="flex items-center mb-2">
                 <input id="slider-speed" class="slider-input" type="range" value="4" min="1" max="7">
-                <span id="span-speed" class="inline-block ml-2">1.00&times;</span>
+                <span id="span-speed" class="slider-indicator inline-block ml-2">1.00&times;</span>
               </div>
             </td>
           </tr>
           <tr>
-            <th class="text-right pr-3">
+            <th class="text-right pr-2">
               <label for="slider-zoom" class="slider-label">Zoom: </label>
             </th>
             <td>
               <div id="control-zoom" class="flex items-center mb-2">
                 <input id="slider-zoom" class="slider-input" type="range" value="4" min="1" max="7">
-                <span id="span-zoom" class="inline-block ml-2">1.00&times;</span>
+                <span id="span-zoom" class="slider-indicator inline-block ml-2">1.00&times;</span>
               </div>
             </td>
           </tr>
           <tr>
-            <th class="text-right pr-3">
+            <th class="text-right pr-2">
               <label for="slider-history" class="slider-label">History: </label>
             </th>
             <td>
               <div id="control-history" class="flex items-center mb-2">
                 <input id="slider-history" class="slider-input" type="range">
-                <span id="span-time-length" class="inline-block ml-2">1</span>
+                <span id="span-time-length" class="slider-indicator inline-block ml-2">1</span>
               </div>
             </td>
           </tr>
@@ -151,16 +151,16 @@
       <canvas id="universe-view">
       </canvas>
       <!-- Subgrid col 1, row 2 -->
-      <span id="span-cell-coords" class="flex justify-end text-gray-500">
+      <span id="span-cell-coords" class="flex justify-end text-white">
         <span id="span-cell-coord-row">0</span>&times;<span id="span-cell-coord-col">0</span>
       </span>
     </div>
 
     <!-- Grid col 1, row 5 -->
-    <div id="page-footer" class="col-span-2">
+    <div id="page-footer" class="col-span-2 max-w-screen-md">
       <hr class="h-0.5 border-t-0 bg-white/10" />
 
-      <div class="mt-8">
+      <div class="mt-6">
         <h1 class="subheader-text">Information</h1>
       </div>
 
@@ -172,75 +172,158 @@
         and you can scroll to any state when the simulation is stopped.
         Also when the simulation is stopped, you can change the state by adding or removing living cells.</p>
       <p>The cell plane can be cleared or randomly seeded and you can create a new universe
-        (with different size) by the buttons at the top (huge universes can slow down the simulation).</p>
+        (with different size) by the buttons at the top (huge universes can slow down the simulation).
+        You can also choose some interesting predefined universes.</p>
       <p>Any manual changes to the state of the universe (making a cell dead or alive,
         clearing, randomly seeding, creating a new universe) causes its history to be cleared.</p>
       <p>You can control the speed of the simulation and zoom the cell plane
         by moving the sliders at the top.</p>
-      <p>Unfortunately, the history is unbounded now and may consume lots of memory with time.</p>
+      <p>Unfortunately, the history is unbounded and may consume lots of memory with time.</p>
 
-      <div class="flex flex-wrap gap-4">
-        <a href="" class="social-link">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 496 512">
-            <path
-              d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
-          </svg>
+      <div class="flex flex-wrap gap-6 mt-4">
+        <a href="https://iyyel.io">
+          <img src="/assets/img/home_icon.svg" class="small-icon white-icon" alt="Home icon">
         </a>
-        <a href="" class="social-link">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 448 512">
-            <path
-              d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
-          </svg>
+
+        <a href="https://github.com/iyyel">
+          <img src="/assets/img/github_icon.svg" class="small-icon white-icon" alt="GitHub icon">
+        </a>
+
+        <a href="https://www.linkedin.com/in/iyyel">
+          <img src="/assets/img/linkedin_icon.svg" class="small-icon white-icon" alt="LinkedIn icon">
+        </a>
+
+        <a href="mailto:hello@iyyel.io">
+          <img src="/assets/img/mail_icon.svg" class="small-icon white-icon" alt="E-mail icon">
         </a>
       </div>
     </div>
 
-    <div id="modal-new-universe"
-      class="fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-500 rounded-lg shadow-md p-6 w-96 overflow-y-auto hidden">
-      <!-- Modal content -->
-      <div>
-        <!-- Modal header -->
-        <div class="flex justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">Create a new universe</h3>
-          <!-- Close button -->
-          <button onclick="location.href='#'"
-            class="text-gray-500 hover:text-gray-700 focus:outline-none cursor-pointer">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
+    <div id="modal-new-universe" class="modal-container">
+      <div id="modal-overlay" class="modal-overlay"></div>
+
+      <div class="modal-new-universe-content">
+        <div class="flex justify-between mb-4">
+          <h3 class="smallheader-text mb-2">Create a new universe</h3>
+          <button onclick="location.href='#'">
+            <img src="/assets/img/close_icon.svg" class="small-icon white-icon hover-icon" alt="Close icon">
           </button>
         </div>
-        <!-- Modal body -->
+
         <div>
-          <div id="modal-new-universe-slider">
-            <label for="slider-new-universe-size">Size: </label>
-            <input id="slider-new-universe-size" type="range">
-            <span id="span-new-universe-size">30</span>
+          <div class="flex">
+            <label for="slider-new-universe-size" class="slider-label pr-2">Size: </label>
+            <div class="flex items-center mb-2">
+              <input id="slider-new-universe-size" class="slider-input" type="range">
+              <span id="span-new-universe-size" class="ml-2 slider-indicator">35</span>
+            </div>
           </div>
-          <div>
-            <label>
-              <input id="cb-new-universe-random-seed" type="checkbox" checked> Seed randomly
+          <div class="mb-4">
+            <label class="flex items-center">
+              <input id="cb-new-universe-random-seed" class="checkbox-input" type="checkbox" checked>
+              <span class="ml-2 font-semibold text-gray-50">Random</span>
             </label>
           </div>
         </div>
-        <!-- Modal buttons -->
-        <div class="mt-4 flex justify-end">
-          <button id="btn-create-universe" type="button" onclick="location.href='#'"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Create</button>
-
-          <button onclick="location.href='#'" type="button"
-            class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded"
-            id="cancelBtn">Cancel</button>
+        <div class="flex justify-end gap-2">
+          <button id="btn-create-universe" type="button" class="create-new-universe-btn">Create</button>
+          <button onclick="location.href='#'" type="button" class="cancel-btn">Cancel</button>
         </div>
       </div>
     </div>
 
-    <!-- Style to show modal when targeted -->
-    <style>
-      #modal-new-universe:target {
-        display: block;
-      }
-    </style>
+    <div id="modal-predefined-universe" class="modal-container">
+      <div id="modal-overlay" class="modal-overlay"></div>
+
+      <div id="modal-predefined-universe-content" class="modal-predefined-universe-content">
+        <div class="flex justify-between mb-4">
+          <h3 class="smallheader-text mb-2">Select a predefined universe</h3>
+          <button onclick="location.href='#'">
+            <img src="/assets/img/close_icon.svg" class="small-icon white-icon hover-icon" alt="Close icon">
+          </button>
+        </div>
+
+        <div class="flex space-x-4 mb-4">
+          <button id="btn-glider" class="card-container">
+            <div class="p-4">
+              <h3 class="card-header">Glider</h3>
+              <p class="card-content">Moves across the universe</p>
+            </div>
+          </button>
+
+          <button id="btn-beehive" class="card-container">
+            <div class="p-4">
+              <h3 class="card-header">Beehive</h3>
+              <p class="card-content">It does nothing</p>
+            </div>
+          </button>
+
+          <button id="btn-blinker" class="card-container">
+            <div class="p-4">
+              <h3 class="card-header">Blinker</h3>
+              <p class="card-content">A small oscillator</p>
+            </div>
+        </div>
+        </button>
+
+        <div class="flex space-x-4 mb-4">
+          <button id="btn-toad" class="card-container">
+            <div class="p-4">
+              <h3 class="card-header">Toad</h3>
+              <p class="card-content">Another oscillator</p>
+            </div>
+          </button>
+
+          <button id="btn-beacon" class="card-container">
+            <div class="p-4">
+              <h3 class="card-header">Beacon</h3>
+              <p class="card-content">Yet another oscillator</p>
+            </div>
+          </button>
+
+          <button id="btn-two-gliders" class="card-container">
+            <div class="p-4">
+              <h3 class="card-header">Two Gliders</h3>
+              <p class="card-content">Two gliders that move into eachother</p>
+            </div>
+          </button>
+        </div>
+
+        <div class="flex space-x-4 mb-4">
+          <button id="btn-lightweight-spaceship" class="card-container">
+            <div class="p-4">
+              <h3 class="card-header">Lightweight Spaceship</h3>
+              <p class="card-content">Also moves across the universe</p>
+            </div>
+          </button>
+
+          <button id="btn-pulsar" class="card-container">
+            <div class="p-4">
+              <h3 class="card-header">Pulsar</h3>
+              <p class="card-content">A more advanced oscillator</p>
+            </div>
+          </button>
+
+          <button id="btn-gospers-glider-gun" class="card-container">
+            <div class="p-4">
+              <h3 class="card-header">Gosper's Glider Gun</h3>
+              <p class="card-content">A gun that produces gliders</p>
+            </div>
+          </button>
+        </div>
+
+        <div>
+          <p>
+            More interesting configurations and information can be found in the
+            <a class="text-link" href="https://conwaylife.com/wiki">LifeWiki</a>.
+          </p>
+        </div>
+
+        <div class="flex justify-end gap-2">
+          <button onclick="location.href='#'" type="button" class="cancel-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
 
     <script type="module" src="/main.js"></script>
 </body>

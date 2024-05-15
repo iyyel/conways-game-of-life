@@ -4,7 +4,7 @@ lazy val gameOfLifeScala = project
   .in(file("."))
   .enablePlugins(ScalaJSPlugin)
   .settings(
-    scalaVersion := "3.4.0",
+    scalaVersion := "3.4.2",
     scalaJSUseMainModuleInitializer := true,
     scalaJSLinkerConfig ~= {
       _.withModuleKind(ModuleKind.ESModule)
@@ -14,6 +14,6 @@ lazy val gameOfLifeScala = project
     },
     libraryDependencies ++= Seq(
       "org.scala-js" %%% "scalajs-dom" % "2.8.0",
-      "com.raquo" %%% "airstream" % "16.0.0"
+      "com.raquo" %%% "airstream" % "17.0.0"
     )
   )
