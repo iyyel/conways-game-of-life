@@ -1,14 +1,14 @@
 package io.iyyel.game.of.life.logic
 
-import io.iyyel.game.of.life.*
+import scala.util.Random
+
 import io.iyyel.game.of.life.logic.CellPlane.{
   Alive,
   CellCoordinates,
   Dead,
   Unchanged
 }
-
-import scala.util.Random
+import io.iyyel.game.of.life.*
 
 final case class Universe private (
     cellPlane: CellPlane

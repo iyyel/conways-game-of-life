@@ -1,14 +1,20 @@
 package io.iyyel.game.of.life.controls;
-import org.scalajs.dom
-import org.scalajs.dom.html.*
+
+import io.iyyel.game.of.life.util.Extensions.getChild
+import io.iyyel.game.of.life.logic.UniverseWithEpoch
+import io.iyyel.game.of.life.logic.Universes
 import io.iyyel.game.of.life.logic.Universe
 import io.iyyel.game.of.life.logic.State
-import io.iyyel.game.of.life.util.Extensions.getChild
-import io.iyyel.game.of.life.logic.Universes
+
+import org.scalajs.dom
+import org.scalajs.dom.html.*
 
 final class PredefinedUniverseModal(
     rootElement: Div,
-    universeState: State[Universe]
+    runningState: State[Boolean],
+    universeState: State[Universe],
+    currentEpochState: State[Int],
+    universeEpochsState: State[List[UniverseWithEpoch]]
 ):
   val btnGlider =
     rootElement.getChild[Button]("btn-glider")
@@ -37,38 +43,31 @@ final class PredefinedUniverseModal(
   val btnGliderGun =
     rootElement.getChild[Button]("btn-gospers-glider-gun")
 
-  btnGlider.onclick = _ =>
-    dom.document.location.href = "#"
-    universeState.set(Universes.GLIDER)
+  btnGlider.onclick = _ => predefinedUniverseClick(Universes.GLIDER)
 
-  btnBeehive.onclick = _ =>
-    dom.document.location.href = "#"
-    universeState.set(Universes.BEEHIVE)
+  btnBeehive.onclick = _ => predefinedUniverseClick(Universes.BEEHIVE)
 
-  btnBlinker.onclick = _ =>
-    dom.document.location.href = "#"
-    universeState.set(Universes.BLINKER)
+  btnBlinker.onclick = _ => predefinedUniverseClick(Universes.BLINKER)
 
-  btnToad.onclick = _ =>
-    dom.document.location.href = "#"
-    universeState.set(Universes.TOAD)
+  btnToad.onclick = _ => predefinedUniverseClick(Universes.TOAD)
 
-  btnBeacon.onclick = _ =>
-    dom.document.location.href = "#"
-    universeState.set(Universes.BEACON)
+  btnBeacon.onclick = _ => predefinedUniverseClick(Universes.BEACON)
 
-  btnTwoGliders.onclick = _ =>
-    dom.document.location.href = "#"
-    universeState.set(Universes.TWO_GLIDERS)
+  btnTwoGliders.onclick = _ => predefinedUniverseClick(Universes.TWO_GLIDERS)
 
   btnLightweightSpaceship.onclick = _ =>
-    dom.document.location.href = "#"
-    universeState.set(Universes.LIGHTWEIGHT_SPACESHIP)
+    predefinedUniverseClick(Universes.LIGHTWEIGHT_SPACESHIP)
 
-  btnPulsar.onclick = _ =>
-    dom.document.location.href = "#"
-    universeState.set(Universes.PULSAR)
+  btnPulsar.onclick = _ => predefinedUniverseClick(Universes.PULSAR)
 
-  btnGliderGun.onclick = _ =>
+  btnGliderGun.onclick = _ => predefinedUniverseClick(Universes.GLIDER_GUN)
+
+  def predefinedUniverseClick(universe: Universe): Unit =
     dom.document.location.href = "#"
-    universeState.set(Universes.GLIDER_GUN)
+    runningState.set(false)
+    universeState.set(universe)
+    val newEpoch = 1
+    currentEpochState.set(newEpoch)
+    universeEpochsState.set(
+      List(UniverseWithEpoch(universeState.now(), newEpoch))
+    )

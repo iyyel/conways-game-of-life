@@ -1,10 +1,11 @@
 package io.iyyel.game.of.life.controls
 
-import io.iyyel.game.of.life.logic.State
-import org.scalajs.dom
-import org.scalajs.dom.html.{Button, Span}
 import io.iyyel.game.of.life.util.Extensions.{addClass, removeClass}
 import io.iyyel.game.of.life.util.Extensions.getChild
+import io.iyyel.game.of.life.logic.State
+
+import org.scalajs.dom.html.{Button, Span}
+import org.scalajs.dom
 
 final class StartStopButton(
     val btnElement: Button,

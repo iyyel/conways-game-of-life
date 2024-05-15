@@ -1,9 +1,9 @@
 package io.iyyel.game.of.life.controls
 
-import io.iyyel.game.of.life.logic.State
 import io.iyyel.game.of.life.util.Extensions.getChild
-import org.scalajs.dom.html.{Div, Input, Span}
+import io.iyyel.game.of.life.logic.State
 
+import org.scalajs.dom.html.{Div, Input, Span}
 import scala.scalajs.js
 
 final class SpeedControl(rootElement: Div):

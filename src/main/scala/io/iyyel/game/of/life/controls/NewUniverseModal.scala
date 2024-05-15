@@ -1,11 +1,11 @@
 package io.iyyel.game.of.life.controls
 
 import io.iyyel.game.of.life.controls.NewUniverseModal.NewUniverseParams
-import io.iyyel.game.of.life.logic.State
 import io.iyyel.game.of.life.util.Extensions.getChild
-import org.scalajs.dom
-import org.scalajs.dom.html.*
+import io.iyyel.game.of.life.logic.State
 
+import org.scalajs.dom.html.*
+import org.scalajs.dom
 import scala.scalajs.js
 
 final class NewUniverseModal(

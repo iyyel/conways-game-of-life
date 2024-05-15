@@ -1,10 +1,11 @@
 package io.iyyel.game.of.life.controls
 
-import io.iyyel.game.of.life.UniverseWithEpoch
-import io.iyyel.game.of.life.logic.State
+import io.iyyel.game.of.life.logic.UniverseWithEpoch
 import io.iyyel.game.of.life.util.Extensions.getChild
-import org.scalajs.dom.html.{Div, Input, Span}
+import io.iyyel.game.of.life.logic.State
 
+import org.scalajs.dom.html.{Div, Input, Span}
+import org.scalajs.dom
 import scala.scalajs.js
 
 final class HistoryControl(
@@ -19,10 +20,11 @@ final class HistoryControl(
 
   val selectionState: State[Int] = State[Int](slider.value)
 
-  private val disabledState =
-    State[Boolean](runningState.now() || universeEpochsState.now().isEmpty)
-
-  disabledState.observeAfter(slider.disabled = _)
+  runningState.observeAfterWith(
+    universeEpochsState,
+    (running, universeEpochs) =>
+      slider.disabled = running || universeEpochs.size <= 1
+  )
 
   universeEpochsState.observe(universeEpochs =>
     val lastEpoch = universeEpochs.headOption.map(_.epoch).getOrElse(0)
