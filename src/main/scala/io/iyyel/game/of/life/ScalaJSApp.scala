@@ -10,6 +10,7 @@ import org.scalajs.dom.html.{Button, Div}
 import scala.concurrent.duration.{DurationInt, FiniteDuration}
 import scala.scalajs.js.timers
 import scala.scalajs.js.timers.SetTimeoutHandle
+import io.iyyel.game.of.life.logic.Universes
 
 private[life] case class UniverseWithEpoch(universe: Universe, epoch: Int)
 
@@ -18,22 +19,7 @@ def main(): Unit =
   val runningState: State[Boolean] = State(false)
   val universeSizeState: State[Int] = State(35)
   val universeChangesState: State[UniverseChanges] = State(null)
-  val universeState: State[Universe] = State(
-    Universe(universeSizeState.now(), universeSizeState.now())
-      // Left glider
-      .setCellAlive(0, 1)
-      .setCellAlive(1, 2)
-      .setCellAlive(2, 0)
-      .setCellAlive(2, 1)
-      .setCellAlive(2, 2)
-
-      // Right glider
-      .setCellAlive(0, 32)
-      .setCellAlive(1, 31)
-      .setCellAlive(2, 33)
-      .setCellAlive(2, 32)
-      .setCellAlive(2, 31)
-  )
+  val universeState: State[Universe] = State(Universes.TWO_GLIDERS)
   val currentEpochState: State[Int] = State[Int](1)
   val universeEpochsState: State[List[UniverseWithEpoch]] =
     State(List(UniverseWithEpoch(universeState.now(), currentEpochState.now())))
@@ -47,6 +33,11 @@ def main(): Unit =
   val newUniverseModal = NewUniverseModal(
     dom.document.getElement[Div]("modal-new-universe"),
     universeSizeState
+  )
+
+  val predefinedUniverseModal = PredefinedUniverseModal(
+    dom.document.getElement[Div]("modal-predefined-universe-content"),
+    universeState
   )
 
   val randomUniverseButton =

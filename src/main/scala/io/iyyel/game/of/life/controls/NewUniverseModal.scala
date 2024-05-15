@@ -33,10 +33,10 @@ final class NewUniverseModal(
   )
 
   btnCreate.onclick = _ =>
+    dom.document.location.href = "#"
     val size = slider.value
     val random = btnRandom.checked
     newUniverseParamsState.set(NewUniverseParams(size, random))
-    true.asInstanceOf[js.Dynamic]
 
   universeSizeState.observe(slider.value = _)
 
