@@ -43,7 +43,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -72,7 +71,7 @@ Here is a Scala 3 implementation of Conway’s **Game of Life**. This project wa
 
 ### Built With
 
-This implementation of **Game of Life** is built using the following technologies:
+This implementation of the **Game of Life** is built using the following technologies:
 
 * [Scala 3](https://www.scala-lang.org/)
 * [Scala.js](https://www.scala-js.org/)
@@ -96,9 +95,13 @@ This implementation of **Game of Life** is built using the following technologie
 
 * Download or clone this repository
 * Open it in your IDE or text editor of choice
-* ...
+* Open a terminal and enter `npm run dev`
+* Open another terminal and enter `sbt` followed by `~fastOptJS`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
 
 <!-- LICENSE -->
 ## License
