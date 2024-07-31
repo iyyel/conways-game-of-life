@@ -98,7 +98,7 @@ This implementation of the **Game of Life** is built using the following technol
 * Open a terminal and enter `npm install` then `npm run dev` (open the localhost link)
 * Open another terminal and enter `sbt` followed by `~fastOptJS`
 
-Play around with the *Game of Life*!
+Play around with the **Game of Life**!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
