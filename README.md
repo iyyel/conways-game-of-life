@@ -55,6 +55,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About Game of Life
 
+[![Game of Life][product-screenshot]](https://github.com/iyyel/conways-game-of-life)
+
 The [**Game of Life**](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), created by [John Conway](https://en.wikipedia.org/wiki/John_Horton_Conway), is a well-known cellular automaton. It features a grid of cells where each cell can either be alive or dead. The evolution of each cell's state over time is determined by straightforward rules:
 
 A live cell with two or three live neighbors continues to live. A dead cell with exactly three live neighbors becomes alive. All other live cells die, and all other dead cells stay dead.
@@ -98,7 +100,7 @@ This implementation of the **Game of Life** is built using the following technol
 * Open a terminal and enter `npm install` then `npm run dev` (open the localhost link)
 * Open another terminal and enter `sbt` followed by `~fastOptJS`
 
-Play around with the *Game of Life*!
+Play around with the **Game of Life**!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -143,3 +145,4 @@ Daniel Larsen (iyyel) - [iyyel.io](https://iyyel.io) - [hello@iyyel.io](mailto:h
 [issues-url]: https://github.com/iyyel/game-of-life/issues
 [license-shield]: https://img.shields.io/github/license/iyyel/game-of-life.svg?style=for-the-badge
 [license-url]: https://github.com/iyyel/game-of-life/blob/main/LICENSE.md
+[product-screenshot]: images/conways.jpg
