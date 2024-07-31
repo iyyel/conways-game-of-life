@@ -1,7 +1,3 @@
-<div id="top"></div>
-
-
-
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -10,10 +6,9 @@
 
 
 
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/iyyel/game-of-life">
+  <a href="https://github.com/iyyel/conways-game-of-life">
     <img src="images/game-of-life-logo.png" width="auto" height="300" alt="Game of Life Logo">
   </a>
 
@@ -26,35 +21,18 @@
 
 
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-game-of-life">About Game of Life</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#usage">Usage</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+## Table of Contents
+- [Introduction](#introduction)
+- [Built With](#built-with)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [License](#license)
+- [Contact](#contact)
+- [Acknowledgments](#acknowledgments)
 
 
 
-<!-- ABOUT THE PROJECT -->
-## About Game of Life
-
+## Introduction
 [![Game of Life][product-screenshot]](https://github.com/iyyel/conways-game-of-life)
 
 The [**Game of Life**](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), created by [John Conway](https://en.wikipedia.org/wiki/John_Horton_Conway), is a well-known cellular automaton. It features a grid of cells where each cell can either be alive or dead. The evolution of each cell's state over time is determined by straightforward rules:
@@ -67,12 +45,9 @@ Here is a Scala 3 implementation of Conway’s **Game of Life**. This project wa
 
 **DISCLAIMER:** The user-interface may not work equally well on all devices and screen sizes. Feel free to submit a PR if you have a fix :)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-### Built With
-
+## Built With
 This implementation of the **Game of Life** is built using the following technologies:
 
 * [Scala 3](https://www.scala-lang.org/)
@@ -81,19 +56,15 @@ This implementation of the **Game of Life** is built using the following technol
 * [Vite.js](https://vitejs.dev/)
 * [Tailwind CSS](https://tailwindcss.com/)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
-<!-- GETTING STARTED -->
 ## Getting Started
-
-### Prerequisites
 
 * Download and install [Scala 3](https://www.scala-lang.org/)
 * Download and install a compatible IDE such as [IntelliJ IDEA](https://www.jetbrains.com/idea/download) or a text editor like [Visual Studio Code](https://code.visualstudio.com/) (requires Metals extension)
 
-### Usage
+
+
+## Usage
 
 * Download or clone this repository
 * Open it in your IDE or text editor of choice
@@ -102,35 +73,20 @@ This implementation of the **Game of Life** is built using the following technol
 
 Play around with the **Game of Life**!
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-
-<!-- LICENSE -->
 ## License
-
 Distributed under the MIT License. See [LICENSE.md](LICENSE.md) for more information.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-<!-- CONTACT -->
 ## Contact
-
 Daniel Larsen (iyyel) - [iyyel.io](https://iyyel.io) - [hello@iyyel.io](mailto:hello@iyyel.io)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-<!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-
-* Ivan Yurchenko - [https://ivanyu.me](https://ivanyu.me/) - [github](https://github.com/ivanyu)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+Ivan Yurchenko - [https://ivanyu.me](https://ivanyu.me/) - [github](https://github.com/ivanyu)
 
 
 
