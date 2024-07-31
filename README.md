@@ -31,7 +31,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About Game of Life</a>
+      <a href="#about-game-of-life">About Game of Life</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -47,6 +47,7 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -61,7 +62,7 @@ A live cell with two or three live neighbors continues to live. A dead cell with
 
 Despite its simplicity, the game can produce intricate and captivating patterns and behaviors, including a fully functional computer or even another instance of the **Game of Life**.
 
-Here is a Scala 3 implementation of Conway’s **Game of Life**. This project was developed mainly to get familiar with Scala 3, with the goal of quickly producing a polished and releasable product. You can access the completed project (here)[https://life.iyyel.io/].
+Here is a Scala 3 implementation of Conway’s **Game of Life**. This project was developed mainly to get familiar with Scala 3, with the goal of quickly producing a polished and releasable product. You can access the completed project [here](https://life.iyyel.io/).
 
 **DISCLAIMER:** The user-interface may not work equally well on all devices and screen sizes. Feel free to submit a PR if you have a fix :)
 
@@ -114,6 +115,16 @@ Distributed under the MIT License. See [LICENSE.md](LICENSE.md) for more informa
 Daniel Larsen (iyyel) - [iyyel.io](https://iyyel.io) - [hello@iyyel.io](mailto:hello@iyyel.io)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* Ivan Yurchenko - [https://ivanyu.me](https://ivanyu.me/) - [github](https://github.com/ivanyu)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
