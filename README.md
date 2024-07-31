@@ -40,7 +40,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#usage">Usage</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -91,12 +91,14 @@ This implementation of the **Game of Life** is built using the following technol
 * Download and install [Scala 3](https://www.scala-lang.org/)
 * Download and install a compatible IDE such as [IntelliJ IDEA](https://www.jetbrains.com/idea/download) or a text editor like [Visual Studio Code](https://code.visualstudio.com/) (requires Metals extension)
 
-### Installation
+### Usage
 
 * Download or clone this repository
 * Open it in your IDE or text editor of choice
-* Open a terminal and enter `npm run dev`
+* Open a terminal and enter `npm install` then `npm run dev` (open the localhost link)
 * Open another terminal and enter `sbt` followed by `~fastOptJS`
+
+Play around with the *Game of Life*!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
