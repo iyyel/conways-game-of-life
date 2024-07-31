@@ -55,15 +55,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About Game of Life
 
-The Game of Life is a classic cellular automaton devised by John Conway. It consists of a grid of cells, each of which can be alive or dead. The state of each cell evolves over time based on simple rules:
+The [**Game of Life**](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), created by [John Conway](https://en.wikipedia.org/wiki/John_Horton_Conway), is a well-known cellular automaton. It features a grid of cells where each cell can either be alive or dead. The evolution of each cell's state over time is determined by straightforward rules:
 
-Any live cell with two or three live neighbors survives.
-Any dead cell with exactly three live neighbors becomes alive.
-All other live cells die, and all other dead cells remain dead.
+A live cell with two or three live neighbors continues to live. A dead cell with exactly three live neighbors becomes alive. All other live cells die, and all other dead cells stay dead.
 
-Despite its simple rules, the game can exhibit complex and fascinating patterns and behaviors such as a fully functioning computer or even the Game of Life itself.
+Despite its simplicity, the game can produce intricate and captivating patterns and behaviors, including a fully functional computer or even another instance of the **Game of Life**.
 
-This is an implementation of Conway’s Game of Life in Scala 3. It was primarily developed as a project to become acquainted with Scala 3, aiming to swiftly achieve a satisfying product ready for release. The finished product can be accessed here.
+Here is a Scala 3 implementation of Conway’s **Game of Life**. This project was developed mainly to get familiar with Scala 3, with the goal of quickly producing a polished and releasable product. You can access the completed project (here)[https://life.iyyel.io/].
+
+**DISCLAIMER:** The user-interface may not work equally well on all devices and screen sizes. Feel free to submit a PR if you have a fix :)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -86,12 +86,10 @@ This implementation of **Game of Life** is built using the following technologie
 <!-- GETTING STARTED -->
 ## Getting Started
 
-It is easy to get started with **Game of Life**.
-
 ### Prerequisites
 
 * Download and install [Scala 3](https://www.scala-lang.org/)
-* Download and install a compatible IDE such as [IntelliJ IDEA](https://www.jetbrains.com/idea/download) or a text editor like [Visual Studio Code](https://code.visualstudio.com/)
+* Download and install a compatible IDE such as [IntelliJ IDEA](https://www.jetbrains.com/idea/download) or a text editor like [Visual Studio Code](https://code.visualstudio.com/) (requires Metals extension)
 
 ### Installation
 
