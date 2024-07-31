@@ -3,10 +3,10 @@ package io.iyyel.game.of.life.controls
 import io.iyyel.game.of.life.logic.CellPlane.{Alive, CellCoordinates, Dead}
 import io.iyyel.game.of.life.logic.{State, Universe, UniverseChanges}
 import io.iyyel.game.of.life.util.Extensions.*
-import org.scalajs.dom
+
 import org.scalajs.dom.CanvasRenderingContext2D
 import org.scalajs.dom.html.{Canvas, Div, Span}
-
+import org.scalajs.dom
 import scala.scalajs.js
 
 final class UniverseView(

@@ -1,8 +1,8 @@
 package io.iyyel.game.of.life.logic
 
-import io.iyyel.game.of.life.logic.CellPlane.*
-
 import scala.collection.mutable.ArrayBuffer
+
+import io.iyyel.game.of.life.logic.CellPlane.*
 
 sealed trait CellPlaneBase:
   val width: Int

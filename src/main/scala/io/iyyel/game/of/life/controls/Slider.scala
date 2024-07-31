@@ -1,8 +1,7 @@
 package io.iyyel.game.of.life.controls
 
-import org.scalajs.dom
 import org.scalajs.dom.html.Input
-
+import org.scalajs.dom
 import scala.scalajs.js
 
 final class Slider(input: Input):
