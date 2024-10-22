@@ -73,6 +73,8 @@ This implementation of the **Game of Life** is built using the following technol
 
 Play around with the **Game of Life**!
 
+* To produce a production build, use `npm run build` (output will be in the `dist` folder)
+
 
 
 ## License
