@@ -1,4 +1,4 @@
-package io.iyyel.game.of.life.util
+package io.iyyel.game.of.life.extensions
 
 import org.scalajs.dom.{Element, HTMLElement, html}
 
@@ -14,12 +14,13 @@ object Extensions:
           elements: Seq[Element],
           childId: String
       ): Option[Element] =
-        elements.flatMap {
-          case element if element.id == childId => Some(element)
-          case element if element.children.nonEmpty =>
-            getChildHelper(element.children.toSeq, childId)
-          case _ => None
-        }.headOption
+        elements
+          .flatMap:
+            case element if element.id == childId => Some(element)
+            case element if element.children.nonEmpty =>
+              getChildHelper(element.children.toSeq, childId)
+            case _ => None
+          .headOption
       getChildHelper(Seq(rootElement), childId)
         .getOrElse(
           throw new NoSuchElementException(s"Child with ID $childId not found")

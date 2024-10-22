@@ -1,7 +1,10 @@
 package io.iyyel.game.of.life.controls
 
-import io.iyyel.game.of.life.util.Extensions.{addClass, removeClass}
-import io.iyyel.game.of.life.util.Extensions.getChild
+import io.iyyel.game.of.life.extensions.Extensions.{
+  addClass,
+  removeClass,
+  getChild
+}
 import io.iyyel.game.of.life.logic.State
 
 import org.scalajs.dom.html.{Button, Span}

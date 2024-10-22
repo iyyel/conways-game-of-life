@@ -1,10 +1,12 @@
 package io.iyyel.game.of.life.controls;
 
-import io.iyyel.game.of.life.util.Extensions.getChild
-import io.iyyel.game.of.life.logic.UniverseWithEpoch
-import io.iyyel.game.of.life.logic.Universes
-import io.iyyel.game.of.life.logic.Universe
-import io.iyyel.game.of.life.logic.State
+import io.iyyel.game.of.life.extensions.Extensions.getChild
+import io.iyyel.game.of.life.logic.{
+  UniverseWithEpoch,
+  Universes,
+  Universe,
+  State
+}
 
 import org.scalajs.dom
 import org.scalajs.dom.html.*

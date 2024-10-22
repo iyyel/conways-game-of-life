@@ -5,11 +5,15 @@ import scala.scalajs.js.timers.SetTimeoutHandle
 import scala.scalajs.js.timers
 
 import io.iyyel.game.of.life.controls.NewUniverseModal.NewUniverseParams
-import io.iyyel.game.of.life.logic.{State, Universe, UniverseChanges}
-import io.iyyel.game.of.life.util.Extensions.getElement
-import io.iyyel.game.of.life.logic.UniverseWithEpoch
-import io.iyyel.game.of.life.logic.Universes
+import io.iyyel.game.of.life.extensions.Extensions.getElement
 import io.iyyel.game.of.life.controls.*
+import io.iyyel.game.of.life.logic.{
+  State,
+  Universe,
+  UniverseChanges,
+  Universes,
+  UniverseWithEpoch
+}
 
 import org.scalajs.dom.html.{Button, Div}
 import org.scalajs.dom
@@ -143,7 +147,7 @@ def main(): Unit =
 
   def setTimeoutOnNextUniverse(): SetTimeoutHandle =
     val interval = speedToDuration(speedControl.speedState.now())
-    timers.setTimeout(interval) {
+    timers.setTimeout(interval):
       if runningState.now() then
         val newGen = universeState.now().nextGeneration()
         universeState.set(newGen._1)
@@ -153,7 +157,6 @@ def main(): Unit =
         currentEpochState.set(newEpoch)
         universeEpochsState.update(UniverseWithEpoch(newGen._1, newEpoch) :: _)
         setTimeoutOnNextUniverse()
-    }
 
   val timeout = setTimeoutOnNextUniverse()
 

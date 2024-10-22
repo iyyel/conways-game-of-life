@@ -1,7 +1,7 @@
 {
-  "name": "game-of-life-scala",
+  "name": "conways-game-of-life",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,9 +10,9 @@
   },
   "devDependencies": {
     "@scala-js/vite-plugin-scalajs": "^1.0.0",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.3",
-    "vite": "^5.2.11"
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "vite": "^5.4.9"
   }
 }

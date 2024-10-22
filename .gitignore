@@ -26,7 +26,6 @@ dist-ssr
 .bloop*
 .bsp*
 .metals*
-.scalafmt.conf*
 package-lock.json*
 target*
 project/target*

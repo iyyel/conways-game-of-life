@@ -5,8 +5,7 @@ export default {
   ],
   theme: {
     fontFamily: {
-      'sans': ['Noto Sans', 'sans-serif'],
-      'heading': ['Roboto Slab', 'sans-serif']
+      'sans': ['Fira Sans'],
     },
   },
   plugins: [],

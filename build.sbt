@@ -1,10 +1,10 @@
 import org.scalajs.linker.interface.ModuleSplitStyle
 
-lazy val gameOfLifeScala = project
+lazy val conwaysGameOfLife = project
   .in(file("."))
   .enablePlugins(ScalaJSPlugin)
   .settings(
-    scalaVersion := "3.4.2",
+    scalaVersion := "3.5.1",
     scalaJSUseMainModuleInitializer := true,
     scalaJSLinkerConfig ~= {
       _.withModuleKind(ModuleKind.ESModule)
@@ -14,6 +14,6 @@ lazy val gameOfLifeScala = project
     },
     libraryDependencies ++= Seq(
       "org.scala-js" %%% "scalajs-dom" % "2.8.0",
-      "com.raquo" %%% "airstream" % "17.0.0"
+      "com.raquo" %%% "airstream" % "17.1.0"
     )
   )

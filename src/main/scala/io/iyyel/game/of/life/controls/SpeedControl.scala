@@ -1,6 +1,6 @@
 package io.iyyel.game.of.life.controls
 
-import io.iyyel.game.of.life.util.Extensions.getChild
+import io.iyyel.game.of.life.extensions.Extensions.getChild
 import io.iyyel.game.of.life.logic.State
 
 import org.scalajs.dom.html.{Div, Input, Span}

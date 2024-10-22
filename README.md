@@ -9,7 +9,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/iyyel/conways-game-of-life">
-    <img src="images/game-of-life-logo.png" width="auto" height="300" alt="Game of Life Logo">
+    <img src="images/conways.jpg" width="auto" height="300" alt="Game of Life Logo">
   </a>
 
   <p align="center">
@@ -22,6 +22,7 @@
 
 
 ## Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
@@ -33,15 +34,14 @@
 
 
 ## Introduction
-[![Game of Life][product-screenshot]](https://github.com/iyyel/conways-game-of-life)
 
-The [**Game of Life**](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), created by [John Conway](https://en.wikipedia.org/wiki/John_Horton_Conway), is a well-known cellular automaton. It features a grid of cells where each cell can either be alive or dead. The evolution of each cell's state over time is determined by straightforward rules:
+The [**Game of Life**](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), created by [**John Conway**](https://en.wikipedia.org/wiki/John_Horton_Conway), is a well-known cellular automaton. It features a grid of cells where each cell can either be alive or dead. The evolution of each cell's state over time is determined by straightforward rules:
 
 A live cell with two or three live neighbors continues to live. A dead cell with exactly three live neighbors becomes alive. All other live cells die, and all other dead cells stay dead.
 
 Despite its simplicity, the game can produce intricate and captivating patterns and behaviors, including a fully functional computer or even another instance of the **Game of Life**.
 
-Here is a Scala 3 implementation of Conway’s **Game of Life**. This project was developed mainly to get familiar with Scala 3, with the goal of quickly producing a polished and releasable product. You can access the completed project [here](https://life.iyyel.io/).
+Here is a Scala 3 implementation of **Conway’s Game of Life**. This project was developed mainly to get familiar with Scala 3, with the goal of quickly producing a polished and releasable product. You can access the completed project [here](https://life.iyyel.io/).
 
 **DISCLAIMER:** The user-interface may not work equally well on all devices and screen sizes. Feel free to submit a PR if you have a fix :)
 
@@ -53,7 +53,7 @@ This implementation of the **Game of Life** is built using the following technol
 * [Scala 3](https://www.scala-lang.org/)
 * [Scala.js](https://www.scala-js.org/)
 * [Airstream](https://github.com/raquo/Airstream/)
-* [Vite.js](https://vitejs.dev/)
+* [Vite](https://vite.dev/)
 * [Tailwind CSS](https://tailwindcss.com/)
 
 
@@ -81,7 +81,7 @@ Distributed under the MIT License. See [LICENSE.md](LICENSE.md) for more informa
 
 
 ## Contact
-Daniel Larsen (iyyel) - [iyyel.io](https://iyyel.io) - [hello@iyyel.io](mailto:hello@iyyel.io)
+Daniel Larsen (iyyel) - [iyyel.io](https://iyyel.io) - [me@iyyel.io](mailto:me@iyyel.io)
 
 
 
